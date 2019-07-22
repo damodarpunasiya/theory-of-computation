@@ -1,0 +1,38 @@
+class Stack :
+    def __init__(self):
+        self.items=[]
+    def push(self,item):
+        self.items.append(item)
+    def pop(self):
+        self.items.pop()
+    def isempty(self):
+        if len(self.items)==0 :
+            return 0
+        else :
+            return 1
+
+print("enter a string to check it has balanced paranthesis or not")
+str=input()
+flag=0
+flagi=0
+s=Stack()
+if str[0]==')' :
+    print("string is not balanced")
+    flag=1
+    flagi=1
+else:
+    for i in range (len(str)):
+        if str[i]=='(' and flag==0 :
+            s.push(str[i])
+        elif str[i]==')' and flag==0:
+            a=s.isempty()
+            if a==0 :
+                flag=1
+            else :
+                s.pop()
+if s.isempty()==1 :
+    flag=1
+if flag==1 and flagi==0 :
+    print("string is not balanced")
+elif flag==0 :
+    print("string is balanced")
